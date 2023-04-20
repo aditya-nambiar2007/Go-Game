@@ -13,10 +13,10 @@ func print(s string) {
 }
 
 func replace(str string) string {
-	out := []rune(str)
-	for i := 1; i < len(out); i += 2 {
-		out[i] = '_'
-	}
+	out := []rune(strings.ToLower(str))
+	rand.Shuffle(len(out), func(i, j int) {
+		out[i], out[j] = out[j], out[i]
+	})
 	return string(out)
 }
 
@@ -26,7 +26,7 @@ var array = [...]string{"Aardvark", "Albatross", "Alligator", "Alpaca", "Ant", "
 func main() {
 	fmt.Println(
 		"Welcome To Animal Guesser:\n",
-		"-> Guess The Animal\n",
+		"-> Guess The Animal From Jumbled Letters\n",
 		"-> Correct Answer : 1 point \n -> Wrong Answer : 0 points\n",
 		"-> Type \"exit\" to exit")
 	fmt.Println("")
@@ -39,7 +39,7 @@ func main() {
 		fmt.Print("Ans : ")
 		fmt.Scan(&str)
 		time.Sleep(500 * time.Millisecond)
-		fmt.Println("Ans :" + animal)
+		fmt.Println("Ans : " + animal)
 		time.Sleep(500 * time.Millisecond)
 		if strings.ToUpper(str) == strings.ToUpper(animal) {
 			print("You Are Correct")
