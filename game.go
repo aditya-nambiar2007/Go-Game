@@ -50,7 +50,8 @@ func main() {
 			fmt.Print("Questions : ", q, "\n")
 			fmt.Print("Correct Answers : ", ca, "\n\n", "Thanks For Trying The Game !")
 			time.Sleep(2 * time.Second)
-			break
+			for {
+			}
 		} else {
 			print("You Are Incorrect")
 		}
